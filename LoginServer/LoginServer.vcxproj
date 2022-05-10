@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{15cc0ab2-cc4b-49bb-b259-4aee85048644}</ProjectGuid>
-    <RootNamespace>ConnectionHandler</RootNamespace>
+    <ProjectGuid>{b5e64173-9ba0-447b-9c0c-44993707e8b0}</ProjectGuid>
+    <RootNamespace>LoginServer</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -40,13 +40,13 @@
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -121,6 +121,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(SolutionDir)$(ProjectName)\headers;$(SolutionDir)ThirdParty;$(SolutionDir)ConnectionHandler\headers</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -136,6 +137,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(SolutionDir)$(ProjectName)\headers;$(SolutionDir)ThirdParty;$(SolutionDir)ConnectionHandler\headers</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -145,7 +147,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="headers\ConnectionHandler.h" />
+    <ClCompile Include="src\Database1.cpp" />
+    <ClCompile Include="src\LoginConnectionHandler.cpp" />
+    <ClCompile Include="src\LoginParser.cpp" />
+    <ClCompile Include="src\LoginServer.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\sha256.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="headers\Database1.h" />
+    <ClInclude Include="headers\LoginConnectionHandler.h" />
+    <ClInclude Include="headers\LoginConstants.h" />
+    <ClInclude Include="headers\LoginParser.h" />
+    <ClInclude Include="headers\LoginServer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
